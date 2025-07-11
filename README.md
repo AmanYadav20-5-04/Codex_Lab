@@ -1,21 +1,14 @@
 # 🚀 Codex_Lab
 
-A hackathon project powered by GitHub + OpenAI Codex.  
+A hackathon project powered by GitHub .  
 This repo is our experimental playground to build, test, and launch features rapidly with AI-assisted development.
 
 ## 🎯 Purpose
 
-Codex_Lab is a collaborative environment where ideas are turned into code fast using Codex prompts, GitHub workflows, and real-time coding.  
+Codex_Lab is a collaborative environment where ideas are turned into code fast using GitHub workflows, and real-time coding.  
 Whether it's full-stack features, APIs, automation tools, or mini utilities — this is the lab where we experiment and ship.
 
-## 🧩 Tech Stack (Planned or Used)
 
-- 🧠 OpenAI Codex / GPT-4o
-- 🖥️ Node.js / Express
-- 🐍 Python (for scripts, automation)
-- 🗂️ MongoDB / Firebase / SQLite (TBD)
-- 🌐 HTML, CSS, JS, Bootstrap
-- ⚙️ GitHub + Git CLI + VS Code / Cursor IDE
 
 👥 How Other Members Can Use This Repo with Branch Workflow
 
