@@ -22,7 +22,7 @@ def error_response(message, status_code):
 def register_user():
     """Endpoint for new user registration."""
     data = request.get_json()
-    if not data or not 'username' in data or not 'email' in data or not 'password' in data:
+    if not data or 'username' not in data or 'email' not in data or 'password' not in data:
         return error_response('Missing data for registration', 400)
 
     if User.query.filter_by(username=data['username']).first():
@@ -47,6 +47,34 @@ def get_user(user_id):
     user = User.query.get_or_404(user_id)
     return jsonify(user.to_dict())
 
+@api.route('/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    """Endpoint to update an existing user's profile."""
+    user = User.query.get_or_404(user_id)
+    data = request.get_json() or {}
+
+    if 'username' in data and data['username'] != user.username:
+        if User.query.filter_by(username=data['username']).first():
+            return error_response('Username already exists', 409)
+        user.username = data['username']
+
+    if 'email' in data and data['email'] != user.email:
+        if User.query.filter_by(email=data['email']).first():
+            return error_response('Email address already in use', 409)
+        user.email = data['email']
+
+    if 'password' in data:
+        user.set_password(data['password'])
+
+    if 'location' in data:
+        user.location = data['location']
+
+    if 'bio' in data:
+        user.bio = data['bio']
+
+    db.session.commit()
+    return jsonify(user.to_dict())
+
 @api.route('/users', methods=['GET'])
 def get_all_users():
     """Endpoint to retrieve all users."""
@@ -59,7 +87,7 @@ def get_all_users():
 def create_skill():
     """Endpoint to add a new skill to the database."""
     data = request.get_json()
-    if not data or not 'name' in data or not 'category' in data:
+    if not data or 'name' not in data or 'category' not in data:
         return error_response('Missing skill name or category', 400)
     
     if Skill.query.filter_by(name=data['name']).first():
@@ -75,6 +103,12 @@ def create_skill():
 def get_skills():
     """Endpoint to retrieve all available skills."""
     skills = Skill.query.all()
+    return jsonify([skill.to_dict() for skill in skills])
+
+@api.route('/skills/category/<string:category>', methods=['GET'])
+def get_skills_by_category(category):
+    """Retrieve skills filtered by category."""
+    skills = Skill.query.filter_by(category=category).all()
     return jsonify([skill.to_dict() for skill in skills])
 
 # --- Swap Routes ---
