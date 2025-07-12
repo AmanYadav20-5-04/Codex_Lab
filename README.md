@@ -1,3 +1,3 @@
 Problem Statement 1 : SkillSwap Platform 
-Team Name : We4Enginners
+Team Name : We4Engineers
 Email : sachdevhiten2@gmail.com
