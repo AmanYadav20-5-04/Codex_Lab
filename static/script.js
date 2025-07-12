@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             (searchTerm === '' || user.skills_offered.some(skill => skill.name.toLowerCase().includes(searchTerm)))
         );
         container.innerHTML = filteredUsers.length === 0 ? `<p class="text-gray-500 col-span-full text-center">No users found.</p>` : filteredUsers.map(user => `
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div class="glass p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div class="flex items-center mb-4">
                     <img src="https://placehold.co/100x100/E2E8F0/4A5568?text=${user.username.charAt(0)}" alt="${user.username}" class="w-16 h-16 rounded-full mr-4">
                     <div>
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const outgoingSwaps = state.swaps.filter(s => s.proposer.id === state.currentUser.id);
 
         incomingContainer.innerHTML = incomingSwaps.length === 0 ? `<p class="text-gray-500">No incoming requests.</p>` : incomingSwaps.map(swap => `
-            <div class="bg-white p-4 rounded-lg shadow-sm border">
+            <div class="glass p-4 rounded-lg shadow-sm border">
                 <p class="text-gray-800">Request from <strong class="font-semibold">${swap.proposer.username}</strong> to swap <em>${swap.offered_skill.name}</em> for your <em>${swap.requested_skill.name}</em></p>
                 <p class="text-sm text-gray-500">Status: <span class="font-medium capitalize text-indigo-600">${swap.status}</span></p>
                 ${swap.status === 'pending' ? `<div class="mt-3 flex gap-2">
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`).join('');
 
         outgoingContainer.innerHTML = outgoingSwaps.length === 0 ? `<p class="text-gray-500">No outgoing requests.</p>` : outgoingSwaps.map(swap => `
-            <div class="bg-white p-4 rounded-lg shadow-sm border">
+            <div class="glass p-4 rounded-lg shadow-sm border">
                 <p class="text-gray-800">Request to <strong class="font-semibold">${swap.receiver.username}</strong> to swap <em>${swap.offered_skill.name}</em> for their <em>${swap.requested_skill.name}</em></p>
                 <p class="text-sm text-gray-500">Status: <span class="font-medium capitalize text-indigo-600">${swap.status}</span></p>
             </div>`).join('');
