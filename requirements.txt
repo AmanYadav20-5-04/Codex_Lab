@@ -1,0 +1,21 @@
+# requirements.txt
+# This file lists the Python packages that your project depends on.
+# Install all packages by running: pip install -r requirements.txt
+
+# The core framework for our web application
+Flask
+
+# For database object-relational mapping (ORM)
+Flask-SQLAlchemy
+
+# For handling database schema migrations
+Flask-Migrate
+
+# For handling Cross-Origin Resource Sharing (CORS) to allow frontend access
+Flask-Cors
+
+# For hashing and checking passwords securely
+Werkzeug
+
+# Used by Flask-Migrate to handle database schema changes
+alembic
